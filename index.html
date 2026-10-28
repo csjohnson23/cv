@@ -269,6 +269,19 @@
     .talk-role { color: var(--text-soft); font-size: 15px; }
     .talk-date { color: var(--text-muted); font-size: 14px; text-align: right; }
 
+    [id] { scroll-margin-top: 24px; }
+
+    .anchor {
+      margin-left: 6px;
+      color: var(--text-muted);
+      font-weight: 400;
+      text-decoration: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    h2:hover .anchor, h3:hover .anchor, .anchor:focus { opacity: 1; }
+    .anchor:hover { color: var(--blue-light); }
+
     footer {
       margin-top: 80px;
       color: var(--text-muted);
@@ -304,6 +317,7 @@
       section { padding-top: 32px; break-inside: avoid-page; }
       .button { border: none; padding: 0; }
       summary::before { display: none; }
+      .anchor { display: none; }
     }
   </style>
 </head>
@@ -332,7 +346,7 @@
     </header>
 
     <section id="research">
-      <h2>Research</h2>
+      <h2>Research <a class="anchor" href="#research" aria-label="Link to this section">#</a></h2>
       <p class="section-sub">AI for Cancer Precision Medicine</p>
 
       <div class="block">
@@ -342,7 +356,7 @@
         </div>
         <p class="note">Per Dana-Farber policy, the methods, evals, results, and titles of this work are proprietary and cannot be shared ahead of journal release. The projects below give the general topic and a description of each, from most to least recent.</p>
 
-        <details>
+        <details id="research-projects">
           <summary>Research projects</summary>
           <ol class="entries">
             <li>
@@ -385,16 +399,16 @@
     </section>
 
     <section id="advising">
-      <h2>Technical Advising</h2>
+      <h2>Technical Advising <a class="anchor" href="#advising" aria-label="Link to this section">#</a></h2>
 
-      <div class="block">
-        <h3>Productionizing AI: ML-Ops, LLM-Ops, and AI-Ops</h3>
+      <div class="block" id="ac215">
+        <h3>Productionizing AI: ML-Ops, LLM-Ops, and AI-Ops <a class="anchor" href="#ac215" aria-label="Link to this section">#</a></h3>
         <p class="role">Teaching Fellow and Technical Advisor, APCOMP 215, Harvard SEAS · Fall 2025</p>
         <div class="body">
           <p>In this course, teams of three to five students designed, built, and deployed their own AI products in a single term: working web or mobile applications with a meaningful modeling component, comparable in scope to a small production-ready app. Each project covered the full lifecycle of an AI system, from data pipelines and model training or fine-tuning to LLM integration, agentic workflows, containerized cloud deployment, and a complete user-facing interface.</p>
           <p>I shepherded each of my teams' projects from inception through scalable deployment, working hands-on with students through every phase: scoping the idea, designing the architecture, implementing it, and deploying it.</p>
         </div>
-        <details>
+        <details id="ac215-projects">
           <summary>Advised student projects</summary>
           <ol class="entries">
             <li>
@@ -428,11 +442,11 @@
         </details>
       </div>
 
-      <div class="block">
-        <h3>Evolved Technology</h3>
+      <div class="block" id="evolved">
+        <h3>Evolved Technology <a class="anchor" href="#evolved" aria-label="Link to this section">#</a></h3>
         <p class="role">Technical Mentor and Judge · Fall 2025 and Spring 2026</p>
         <p class="body">Through Evolved's AI x Bio hackathon, I advised startup and research teams on their technical approach and implementation. The specifics of that work are proprietary, so the teams are listed below with the general focus of each project.</p>
-        <details>
+        <details id="evolved-teams">
           <summary>Advised teams</summary>
           <ol class="entries">
             <li>
@@ -533,7 +547,7 @@
     </section>
 
     <section id="workshops">
-      <h2>Workshops</h2>
+      <h2>Workshops <a class="anchor" href="#workshops" aria-label="Link to this section">#</a></h2>
       <div class="body">
         <p>Teaching is one of the great joys in my life. I particularly enjoy giving hands-on computational skill-building workshops to scientists, engineers, and students interested in applying new AI/ML to their own work.</p>
         <p>My recent workshops focus on AI agents: how best to build, train, and deploy agents and multi-agent systems to accelerate research or existing tech stacks without compromising safety and data security, while remaining compute- and cost-conscious.</p>
@@ -570,6 +584,21 @@
   </main>
 
   <script>
+    // Open any dropdown that a #link points to (or into), then scroll to it.
+    function revealHash() {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const target = id && document.getElementById(id);
+      if (!target) return;
+      let el = target;
+      while (el) {
+        if (el.tagName === "DETAILS") el.open = true;
+        el = el.parentElement;
+      }
+      target.scrollIntoView();
+    }
+    window.addEventListener("hashchange", revealHash);
+    window.addEventListener("DOMContentLoaded", revealHash);
+
     // Expand every dropdown when printing so the full CV prints.
     window.addEventListener("beforeprint", () => {
       document.querySelectorAll("details").forEach(d => {
