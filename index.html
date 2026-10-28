@@ -228,6 +228,12 @@
       font-size: 16px;
     }
 
+    .entries p.fine {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-style: italic;
+    }
+
     .entry-links {
       margin-top: 6px;
       font-size: 15px;
@@ -342,25 +348,30 @@
           <summary>Research projects</summary>
           <ol class="entries">
             <li>
-              <div class="entry-head"><h4>Multi-agent framework for reasoning across data modalities in cancer treatment decision support</h4><span class="status">[Status]</span></div>
-              <p>[Description]</p>
+              <div class="entry-head"><h4>Multi-agent framework for reasoning across data modalities in cancer treatment decision support</h4><span class="status">In preparation</span></div>
+              <p>A cancer patient's first treatment is their best chance. The right drug might send a patient into remission, while the wrong one not only delays effective treatment and significantly reduces patient health, but often acts as a mutagen on the tumor, making further treatments less likely to succeed. Predicting which patients will respond to a treatment before it is prescribed is therefore inestimably important, and remains a largely open question for most treatments.</p>
+              <p>This project built a multi-agent AI system that reasons over different data modalities for one patient, bringing systemic host context into treatment recommendations alongside embeddings of tumor somatic information, clinical notes, lab values, and both external and internal knowledge bases. The result is a contextualized treatment recommendation grounded in patient data. The system was trained on more than 60,000 patients from the DFCI PROFILE cohort, TCGA, and the Hartwig Medical Foundation.</p>
+              <p class="fine">Method details, evaluation metrics, and results are proprietary.</p>
             </li>
             <li>
-              <div class="entry-head"><h4>Multimodal representation learning for germline and somatic genomics reveals novel host-tumor associations</h4><span class="status">[Status]</span></div>
-              <p>[Description]</p>
+              <div class="entry-head"><h4>Multimodal representation learning for germline and somatic genomics reveals novel host-tumor associations</h4><span class="status">Submitted</span></div>
+              <p>Most models of cancer genomics focus on the tumor itself: somatic mutations, single-cell RNA-seq, H&amp;E images, and spatial biology sampled from the tumor. But cancer grows inside a host, and when we treat cancer, we treat the whole host, not the tumor in isolation. Host-level attributes may therefore shape tumor evolution, the somatic mutational profile, and even treatment outcomes.</p>
+              <p>In this project, we integrated tumor somatic and host germline genomics into one representation learning model, to interrogate the shared host-tumor latent space for novel germline-somatic associations and to assess the prognostic value of the joint latent space for downstream clinical endpoints.</p>
+              <p class="fine">Method details, evaluation metrics, and results are proprietary.</p>
             </li>
             <li>
-              <div class="entry-head"><h4>Germline representations associated with overall survival, comorbidities, and adverse events in cancer patients</h4><span class="status">[Status]</span></div>
-              <p>[Description]</p>
+              <div class="entry-head"><h4>Novel approach to high clinical signal dimensionality reduction produces germline genomic representations associated with overall survival, comorbidities, and adverse events in cancer patients</h4><span class="status">Submitted</span></div>
+              <p>The human genome contains more than a billion catalogued genetic variants. The largest germline sequencing datasets, such as the UK Biobank, include about 500,000 genomes, and cancer cohorts with germline data number fewer than 100,000 patients: fewer than one patient for every 10,000 variants. To bring the germline into oncology modeling tasks, we need dimensionality reduction methods that retain the clinically important signal in a patient's germline beyond genetic ancestry, while greatly reducing the number of features in the germline vector.</p>
+              <p>We introduce a novel germline genome representation that uses publicly available data to prioritize likely high-signal variants, then weights those features with pre-trained effect sizes from off-trait GWAS and polygenic scores. We then assess the clinical utility of the representation through its associations with adverse events, comorbidities, and survival in cancer patients.</p>
+              <p class="fine">Method details, evaluation metrics, and results are proprietary.</p>
             </li>
             <li>
-              <div class="entry-head"><h4>Novel approach to high clinical signal dimensionality reduction in germline genome representations</h4><span class="status">[Status]</span></div>
-              <p>[Description]</p>
+              <div class="entry-head"><h4>Signal distillation for improved cross-cohort transfer of polygenic scores</h4><span class="status">Submitted</span></div>
+              <p>Polygenic scores are almost always evaluated against healthy or population controls. We benchmarked hundreds of PGS Catalog cancer scores on a harder and more clinically relevant task: distinguishing patients with one cancer from patients with other cancers, with no healthy controls. We scored more than 30,000 patients across cohorts with very different germline data sources, including genotypes imputed from off-target reads of tumor panel sequencing (DFCI PROFILE), blood and tissue-normal genotypes (TCGA), and whole genomes (Hartwig Medical Foundation).</p>
+              <p>We found that a cancer's related scores are imperfectly redundant views of one shared genetic axis. Differences in the single best score per cohort are driven by measurement noise and variant matching, and importantly, the score trained on the largest or most recent GWAS is not always among the best performers. We present a novel signal distillation method, and show that the distilled score sits closer to the shared cross-cohort signal than any individual score: built in one cohort and applied unchanged to another, it transfers more cleanly than the best single score.</p>
+              <p class="fine">Method details, evaluation metrics, and results are proprietary.</p>
             </li>
-            <li>
-              <div class="entry-head"><h4>Signal distillation for improved cross-cohort transfer of polygenic scores</h4><span class="status">[Status]</span></div>
-              <p>[Description]</p>
-            </li>
+            <!-- Hidden until descriptions are written
             <li>
               <div class="entry-head"><h4>Germline:somatic disease gene convergence reveals novel gene class in 5 adult solid tumors</h4><span class="status">[Status]</span></div>
               <p>[Description]</p>
@@ -369,6 +380,7 @@
               <div class="entry-head"><h4>Germline similarity predicts tumor somatic similarity in cancer patients</h4><span class="status">[Status]</span></div>
               <p>[Description]</p>
             </li>
+            -->
           </ol>
         </details>
       </div>
