@@ -46,12 +46,14 @@
 
     /* Intro */
     .intro {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 56px;
-      align-items: start;
       padding-bottom: 56px;
       border-bottom: 1px solid var(--rule);
+    }
+
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 36px;
     }
 
     .portrait {
@@ -76,9 +78,10 @@
       font-weight: 500;
     }
 
+    .portrait, .portrait-fallback { flex-shrink: 0; }
+
     .identity h1 {
-      margin-top: 24px;
-      font-size: 26px;
+      font-size: 30px;
       color: var(--text);
     }
 
@@ -93,7 +96,7 @@
     .titles li + li { margin-top: 4px; }
 
     .bio {
-      padding-top: 8px;
+      padding-top: 40px;
       color: var(--text-soft);
       font-size: 17px;
     }
@@ -270,14 +273,13 @@
       body { font-size: 16px; }
       main { padding: 48px 16px 72px; }
 
-      .intro {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding-bottom: 40px;
-      }
-      .portrait, .portrait-fallback { width: 140px; height: 140px; }
-      .portrait-fallback { font-size: 44px; }
-      .bio { padding-top: 0; font-size: 17px; }
+      .intro { padding-bottom: 40px; }
+      .identity { gap: 20px; }
+      .portrait, .portrait-fallback { width: 100px; height: 100px; }
+      .portrait-fallback { font-size: 34px; }
+      .identity h1 { font-size: 24px; }
+      .titles { font-size: 14px; }
+      .bio { padding-top: 28px; font-size: 16px; }
 
       section { padding-top: 48px; }
 
@@ -307,11 +309,13 @@
         <img class="portrait" src="photo.jpg" alt="Portrait of Claire S. Johnson"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="portrait-fallback" aria-hidden="true">C</div>
-        <h1>Claire S. Johnson</h1>
-        <ul class="titles">
-          <li>PhD Candidate, Division of Medical Sciences, Harvard University</li>
-          <li>Founder &amp; CEO, Evolved Technology</li>
-        </ul>
+        <div>
+          <h1>Claire S. Johnson</h1>
+          <ul class="titles">
+            <li>PhD Candidate, Division of Medical Sciences, Harvard University</li>
+            <li>Founder &amp; CEO, Evolved Technology</li>
+          </ul>
+        </div>
       </div>
       <div class="bio">
         <p>Hi! I'm Claire. I'm an AI/ML research engineer finishing a PhD in cancer precision medicine at Harvard, advised by Dr. Eliezer Van Allen, Chief AI Officer at the Dana-Farber Cancer Institute. I design and build novel machine learning models and agentic AI systems to tackle challenges in clinical oncology that traditional approaches can't solve, with a focus on patient representation learning and clinical decision support.</p>
