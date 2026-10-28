@@ -324,21 +324,21 @@
         </div>
       </div>
       <div class="bio">
-        <p>Hi! I'm Claire. I'm an AI/ML research engineer working in cancer, and founder of an AI x Bio startup accelerator. I'm currently finishing a PhD in <a href="#projects">AI for cancer precision medicine</a> at Harvard and the Dana-Farber Cancer Institute, where I built novel ML models for multimodal genomics and developed them into agentic systems to improve treatment decision-making for patients.</p>
+        <p>Hi! I'm Claire. I'm an AI/ML research engineer working in cancer, and founder of an AI x Bio startup accelerator. I'm currently finishing a PhD in <a href="#research">AI for cancer precision medicine</a> at Harvard and the Dana-Farber Cancer Institute, where I built novel ML models for multimodal genomics and developed them into agentic systems to improve treatment decision-making for patients.</p>
         <p>Alongside my research, I run <a href="https://www.evolvedtechnology.org">Evolved Technology</a>: a non-profit AI/ML hackathon program to spark and scale more innovation in science and health. Evolved equips teams around the world with compute, models, and data to accelerate breakthroughs in healthcare and life sciences, enabled by NVIDIA and Nebius.</p>
         <p>I'm a hands-on <a href="#advising">technical advisor</a> to startups implementing AI systems, ensuring robustness, safe and scalable deployments, and strong evals, both for startups inside Evolved and externally as a consultant. I also run <a href="#workshops">skills workshops</a> for students, scientists, and researchers to understand AI and agents, particularly how they can safely customize and deploy AI workflows to accelerate their own research and impact.</p>
         <p>Prior to my PhD, I worked on machine learning for functional genomics in ALS under Dr. David Knowles, and antibiotic resistance under Dr. Allison Lopatkin. My undergraduate degree was in Computer Science at Columbia University, with a specialization in Intelligent Systems.</p>
       </div>
     </header>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p class="section-sub">Computational Oncology</p>
+    <section id="research">
+      <h2>Research</h2>
+      <p class="section-sub">AI for Cancer Precision Medicine</p>
 
       <div class="block">
         <div class="body">
-          <p>My research builds machine learning methods that learn representations of cancer patients from their inherited (germline) genomes, their tumors' somatic genomes, and their clinical records, and turns those representations into tools for clinical decision support.</p>
-          <p>One thread asks how a patient's germline shapes the cancer they develop and how they fare: learning compact, clinically meaningful germline representations, relating them to tumor somatic profiles, and linking them to survival, comorbidities, and adverse events. Another builds multi-agent AI systems that reason across genomic, clinical, and other data modalities to support treatment decisions. Across both, I focus on methods that transfer across patient cohorts and hold up under clinical scrutiny.</p>
+          <p>In precision oncology, we usually study the tumor in isolation: which tumors or cell lines respond to a treatment, and which don't. Machine learning models for these questions are typically built on tumor data alone. But when we treat a patient, we treat the whole person, not a tumor in a vacuum. A patient's germline genetics and systemic traits plausibly shape which tumor develops, how it evolves, and how well a treatment works.</p>
+          <p>My research puts the tumor back in the context of the host, modeling the two together to improve cancer models and clinical decisions. I approach this across a spectrum of resolution. At the finest level, I study gene-level convergence between a patient's germline and their tumor: which genes are involved and how they interact. Moving outward, I develop ways to bring the whole germline genome into machine learning models without losing signal we can't specify in advance, and I use polygenic scores and GWAS to bring population genetics into host-tumor models. At the broadest level, I build multimodal representation learning models that integrate germline and somatic genomics into a first-of-its-kind joint representation space, study its structure for new host-tumor relationships, and use its embeddings to improve downstream clinical predictions. Agentic systems then carry this host context into treatment recommendations for individual patients.</p>
         </div>
         <p class="note">The results of this work, and in some cases the project titles, are proprietary and can't be shared here. The projects below give the general topic and a description of each, from most to least recent.</p>
 
