@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Claire S. Johnson</title>
+  <style>
+    :root {
+      --text: #1f2328;
+      --text-soft: #4b5563;
+      --text-muted: #6b7280;
+      --blue: #1f4e8c;
+      --blue-light: #3b7dd8;
+      --blue-wash: #f3f7fc;
+      --rule: #e5e7eb;
+      --bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    a { color: var(--blue); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--blue-light); }
+
+    h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
+
+    p { margin: 0 0 1em; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Intro */
+    .intro {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      align-items: start;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .portrait {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: var(--blue-wash);
+    }
+
+    .portrait-fallback {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--blue-wash);
+      color: var(--blue);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      font-weight: 500;
+    }
+
+    .identity h1 {
+      margin-top: 24px;
+      font-size: 26px;
+      color: var(--text);
+    }
+
+    .titles {
+      margin: 8px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .titles li + li { margin-top: 4px; }
+
+    .bio {
+      padding-top: 8px;
+      color: var(--text-soft);
+      font-size: 17px;
+    }
+
+    /* Sections */
+    section {
+      padding-top: 64px;
+    }
+
+    section > h2 {
+      font-size: 24px;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+
+    .block + .block { margin-top: 44px; }
+
+    .block h3 {
+      font-size: 19px;
+      margin-bottom: 4px;
+    }
+
+    .role {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .body { color: var(--text-soft); }
+
+    .note {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: var(--blue-wash);
+      border-left: 3px solid var(--blue-light);
+      border-radius: 0 6px 6px 0;
+      color: var(--text-soft);
+      font-size: 16px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 10px 18px;
+      border: 1px solid var(--blue);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .button:hover { background: var(--blue); color: #fff; }
+
+    /* Dropdowns */
+    details {
+      margin-top: 24px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 14px 0;
+      color: var(--blue);
+      font-weight: 500;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(-45deg);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+    }
+    details[open] > summary::before { transform: rotate(45deg); }
+    summary:hover { color: var(--blue-light); }
+
+    .entries {
+      list-style: none;
+      margin: 0;
+      padding: 4px 0 20px 17px;
+    }
+
+    .entries > li { padding: 14px 0; }
+    .entries > li + li { border-top: 1px solid var(--rule); }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .entries h4 { font-size: 17px; }
+
+    .date {
+      color: var(--text-muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .status {
+      flex-shrink: 0;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--blue-wash);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .entries p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 16px;
+    }
+
+    .entry-links {
+      margin-top: 6px;
+      font-size: 15px;
+    }
+    .entry-links a + a { margin-left: 16px; }
+
+
+    .plain-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-soft);
+    }
+    .plain-list li + li { margin-top: 6px; }
+
+    /* Talks */
+    .talks {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .talks li {
+      display: grid;
+      grid-template-columns: 1fr 160px 110px;
+      gap: 24px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+
+    .talk-name { color: var(--text); }
+    .talk-role { color: var(--text-soft); font-size: 15px; }
+    .talk-date { color: var(--text-muted); font-size: 14px; text-align: right; }
+
+    footer {
+      margin-top: 80px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      main { padding: 48px 16px 72px; }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-bottom: 40px;
+      }
+      .portrait, .portrait-fallback { width: 140px; height: 140px; }
+      .portrait-fallback { font-size: 44px; }
+      .bio { padding-top: 0; font-size: 17px; }
+
+      section { padding-top: 48px; }
+
+      .entries { padding-left: 0; }
+      .entry-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+      .talks li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+      .talk-date { text-align: left; }
+    }
+
+    @media print {
+      main { padding: 0; max-width: none; }
+      section { padding-top: 32px; break-inside: avoid-page; }
+      .button { border: none; padding: 0; }
+      summary::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <header class="intro">
+      <div class="identity">
+        <img class="portrait" src="photo.jpg" alt="Portrait of Claire S. Johnson"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="portrait-fallback" aria-hidden="true">C</div>
+        <h1>Claire S. Johnson</h1>
+        <ul class="titles">
+          <li>PhD Candidate, Division of Medical Sciences, Harvard University</li>
+          <li>Founder &amp; CEO, Evolved Technology</li>
+        </ul>
+      </div>
+      <div class="bio">
+        <p>Hi! I'm Claire. I'm an AI/ML research engineer finishing a PhD in cancer precision medicine at Harvard, advised by Dr. Eliezer Van Allen, Chief AI Officer at the Dana-Farber Cancer Institute. I design and build novel machine learning models and agentic AI systems to tackle challenges in clinical oncology that traditional approaches can't solve, with a focus on patient representation learning and clinical decision support.</p>
+        <p>Outside of my research, I'm invested in enabling cutting-edge AI/ML methods to solve challenges in human health in as many contexts as possible. To that end, I founded and run an AI x Bio hackathon program to spark and scale more innovation in science and health: <a href="https://www.evolvedtechnology.org">Evolved Technology</a>. Evolved is a non-profit that equips teams around the world with computational resources to accelerate breakthroughs in healthcare and life sciences, enabled by NVIDIA and Nebius.</p>
+        <p>Both inside and outside of Evolved, I'm a collaborative and hands-on technical advisor to startups implementing AI systems, ensuring robustness, safe and scalable deployments, and strong evals.</p>
+        <p>Prior to my PhD, I worked on machine learning for functional genomics in ALS under Dr. David Knowles at Columbia University and the New York Genome Center, and antibiotic resistance under Dr. Allison Lopatkin at Barnard College. My undergraduate degree was in Computer Science, with a specialization in Intelligent Systems.</p>
+        <p>I'm always happy to chat cancer research and AI x Bio innovation - <a href="mailto:cjohnson@g.harvard.edu">reach out!</a></p>
+      </div>
+    </header>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="section-sub">Computational Oncology</p>
+
+      <div class="block">
+        <div class="body">
+          <p>My research builds machine learning methods that learn representations of cancer patients from their inherited (germline) genomes, their tumors' somatic genomes, and their clinical records, and turns those representations into tools for clinical decision support.</p>
+          <p>One thread asks how a patient's germline shapes the cancer they develop and how they fare: learning compact, clinically meaningful germline representations, relating them to tumor somatic profiles, and linking them to survival, comorbidities, and adverse events. Another builds multi-agent AI systems that reason across genomic, clinical, and other data modalities to support treatment decisions. Across both, I focus on methods that transfer across patient cohorts and hold up under clinical scrutiny.</p>
+        </div>
+        <p class="note">The results of this work, and in some cases the project titles, are proprietary and can't be shared here. The projects below give the general topic and a description of each, from most to least recent.</p>
+        <a class="button" href="#">View the MCP demo</a>
+
+        <details>
+          <summary>Research projects</summary>
+          <ol class="entries">
+            <li>
+              <div class="entry-head"><h4>Multi-agent framework for reasoning across data modalities in cancer treatment decision support</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+            <li>
+              <div class="entry-head"><h4>Multimodal representation learning for germline and somatic genomics reveals novel host-tumor associations</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+            <li>
+              <div class="entry-head"><h4>Germline representations associated with overall survival, comorbidities, and adverse events in cancer patients</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+            <li>
+              <div class="entry-head"><h4>Novel approach to high clinical signal dimensionality reduction in germline genome representations</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+            <li>
+              <div class="entry-head"><h4>Signal distillation for improved cross-cohort transfer of polygenic scores</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+            <li>
+              <div class="entry-head"><h4>Germline:somatic disease gene convergence reveals novel gene class in 5 adult solid tumors</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+            <li>
+              <div class="entry-head"><h4>Germline similarity predicts tumor somatic similarity in cancer patients</h4><span class="status">[Status]</span></div>
+              <p>[Description]</p>
+            </li>
+          </ol>
+        </details>
+      </div>
+    </section>
+
+    <section id="advising">
+      <h2>Technical Advising</h2>
+
+      <div class="block">
+        <h3>Productionizing AI: ML-Ops, LLM-Ops, and AI-Ops</h3>
+        <p class="role">Teaching Fellow and Technical Advisor, APCOMP 215, Harvard SEAS · Fall 2025</p>
+        <div class="body">
+          <p>In this course, teams of three to five students designed, built, and deployed their own AI products in a single term: working web or mobile applications with a meaningful modeling component, comparable in scope to a small production-ready app. Each project covered the full lifecycle of an AI system, from data pipelines and model training or fine-tuning to LLM integration, agentic workflows, containerized cloud deployment, and a complete user-facing interface.</p>
+          <p>I shepherded each of my teams' projects from inception through scalable deployment, working hands-on with students through every phase: scoping the idea, designing the architecture, implementing it, and deploying it.</p>
+        </div>
+        <details>
+          <summary>Advised student projects</summary>
+          <ol class="entries">
+            <li>
+              <h4><a href="https://medium.com/institute-for-applied-computational-science/predictbg-a-new-era-of-diabetes-care-with-real-time-predictions-and-personalized-guidance-ca24fb07e1c8">PredictBG</a></h4>
+              <p>An iOS app that forecasts blood glucose up to 30 minutes ahead using Transformer-based time-series models trained on Type 1 diabetes CGM datasets. It also estimates carbohydrates from meal photos and uses a RAG advisor grounded in clinical guidelines to turn forecasts into practical advice.</p>
+            </li>
+            <li>
+              <h4><a href="https://github.com/firstaid-llm/AC215_firstaid-llm">FirstAid LLM</a></h4>
+              <p>A retrieval-augmented first-aid assistant that answers questions with citations drawn from 99+ authoritative medical guidelines. A DistilBERT classifier flags life-threatening emergencies and prompts users to call 911, and voice input allows hands-free questions.</p>
+              <div class="entry-links"><a href="https://firstaidllm.org">Live demo</a><a href="https://medium.com/institute-for-applied-computational-science/grounded-not-hallucinated-building-a-medical-ai-you-can-actually-trust-60a90305a78e">Blog post</a></div>
+            </li>
+            <li>
+              <h4><a href="https://medium.com/institute-for-applied-computational-science/duped-your-skincare-dupe-finder-30e1c17ba9a4">Duped</a></h4>
+              <p>A skincare dupe finder that recommends cheaper, functionally similar products. Products are embedded from their ingredient lists and searched in a Qdrant vector index, an agent enriches results with live shopping data, and a dedicated service flags risky ingredient interactions. Users can search by product name, ingredient list, or a photo of the label.</p>
+            </li>
+            <li>
+              <h4><a href="https://medium.com/@hkidanemariam/evea-advancing-data-driven-womens-health-4499b13d5b67">Evea</a></h4>
+              <p>An iOS app that connects menstrual cycle logs and symptoms with wearable data from HealthKit to give phase-aware, research-grounded recommendations for managing PMS. User events stream through Pub/Sub into Cloud Run and Cloud SQL, and a RAG service on Vertex AI generates each day's insights.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.loom.com/share/79b7caa2c458469bbc2cd8cc7e461a2f">Lyv Health</a></h4>
+              <p>Lyv Intelligence, an AI layer for Lyv Health's women's longevity and preventive medicine platform. The team built containerized microservices on GCP in which an ML API turns each member's health data into a personalized prompt, grounded by a RAG pipeline over MongoDB and developed against generated synthetic user data. Lyv Health has since rebranded as Altro Health and operates as a startup.</p>
+              <div class="entry-links"><a href="https://www.loom.com/share/79b7caa2c458469bbc2cd8cc7e461a2f">Demo video</a><a href="https://altrohealth.com/post/lyv-health-is-now-altro-health">Altro Health</a></div>
+            </li>
+            <li>
+              <h4><a href="https://github.com/ac215-dosewise/ac215-project">DoseWise</a></h4>
+              <p>A counterfactual prediction system that lets clinicians see how a drug is likely to affect a patient's vital signs before it's given, comparing predicted vitals with and without treatment and adding LLM-generated clinical summaries. Built on a VitalDB-to-BigQuery training pipeline with a FastAPI inference service and a Next.js dashboard.</p>
+              <div class="entry-links"><a href="https://medium.com/institute-for-applied-computational-science/dosewise-ai-powered-drug-decisions-in-the-operating-room-d037263bd772">Blog post</a></div>
+            </li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="block">
+        <h3>Evolved Technology</h3>
+        <p class="role">Technical Mentor and Judge · Fall 2025 and Spring 2026</p>
+        <p class="body">Through Evolved's AI x Bio hackathon, I advised startup and research teams on their technical approach and implementation. The specifics of that work are proprietary, so the teams are listed below with the general focus of each project.</p>
+        <details>
+          <summary>Advised teams</summary>
+          <ol class="entries">
+            <li>
+              <h4><a href="https://unlockbiology.com">Unlock Biology</a></h4>
+              <p>Built an agent-in-the-loop extension for Nextflow that reviews QC metrics and artifacts mid-pipeline, proposes parameter re-sweeps, and re-runs only the affected branches, logging each decision to a reusable graph of past analyses.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.raycaster.ai">Raycaster</a></h4>
+              <p>Developed an agentic CMC and regulatory copilot that turns batch records, specifications, and stability data into source-cited drafts of Module 3 submission content.</p>
+            </li>
+            <li>
+              <h4><a href="https://biolligence.com">Biolligence</a></h4>
+              <p>Developed a multi-agent drug safety suite that extracts toxicity signals from chemical and omics data, maps them to biological pathways, and checks them against public safety databases such as FAERS and ChEMBL.</p>
+            </li>
+            <li>
+              <h4><a href="https://genobank.io">GenoBank.io</a></h4>
+              <p>Built an air-gapped MCP server that lets AI agents analyze genomic data locally, with no external API calls, while tracking data ownership and provenance on-chain.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.m3triq.com">M3TRIQ</a></h4>
+              <p>Combined protein and molecular foundation models with multi-agent orchestration to design protein–ligand interactions that can replace growth factors in serum-free cell culture.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.genocache.com">GenoCache Align</a></h4>
+              <p>Developed a GPU-accelerated genomic aligner that replaces traditional seeding with fine-tuned DNA transformer embeddings and approximate nearest-neighbor search over cached reference genome tiles.</p>
+            </li>
+            <li>
+              <h4><a href="https://kepler.ai">Kepler AI</a></h4>
+              <p>Automated bioinformatics workflows by using language models to enrich and structure the unstructured metadata in large biological data sources.</p>
+            </li>
+            <li>
+              <h4><a href="https://heliosynthresearch.ai">HelioSynth Research</a></h4>
+              <p>Developed a multi-agent decision support system that integrates imaging, genomic, and clinical data into explainable diagnostic and treatment reports for cancer care.</p>
+            </li>
+            <li>
+              <h4><a href="https://varosync.com">Varosync</a></h4>
+              <p>Designed GPCR-targeted protein binders using enhanced molecular dynamics and AI-guided transition path sampling to capture cryptic binding pockets in their native membrane context.</p>
+            </li>
+            <li>
+              <h4><a href="https://fastfold.ai">Fastfold AI</a></h4>
+              <p>Built a binder design loop that adds selectivity scoring against off-target proteins and LLM-based filtering for properties such as solubility, stability, and immunogenicity.</p>
+            </li>
+            <li>
+              <h4><a href="https://gardn.bio">Gardn Biosciences</a></h4>
+              <p>Applied Design by Integrated Gradients, a differentiability-free framework that turns model interpretability into generative design, to design complete mRNAs optimized for translation, stability, and structure.</p>
+            </li>
+            <li>
+              <h4><a href="https://microdao.bio">microDAO</a></h4>
+              <p>Fine-tuned a protein language model to generate novel antimicrobial peptides, paired with deep learning predictors of activity and toxicity in an iterative generate, score, and refine loop.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.multi-d.com">Multi-D @ Elegant Mathematics</a></h4>
+              <p>Scaled an equivariant graph neural network foundation model that generates conformational ensembles and energies for small molecules, trained on up to 1.7 billion conformers.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.leash.bio">Leash Biosciences</a></h4>
+              <p>Trained a binding model on DNA-encoded library data covering more than 500 proteins and 6.5 million molecules, testing whether it responds to binding pocket mutations and can locate known pockets.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.silico.bio/peleke">Silico Biosciences</a></h4>
+              <p>Tuned language models on curated antibody–antigen complex sequences to generate antibodies with high binding affinity for target antigens, extending their peleke-1 models.</p>
+            </li>
+            <li>
+              <h4><a href="https://bhaleshainc.com">Bhalesha</a></h4>
+              <p>Developed genomic AI models that infer an embryo's genome from cell-free DNA and parental whole genomes, enabling non-invasive screening for chromosomal and single-gene disorders.</p>
+            </li>
+            <li>
+              <h4><a href="https://github.com/macwiatrak/Bacformer">Bacformer (University of Cambridge)</a></h4>
+              <p>Pretrained a bacterial foundation model that represents whole organisms as ordered sequences of proteins along the genome, aimed at uncovering the genetic drivers of antibiotic resistance and other phenotypes.</p>
+            </li>
+            <li>
+              <h4><a href="https://virgosvs.com">Virgo</a></h4>
+              <p>Extended EndoDINO, their foundation model for endoscopic images, toward video using a dataset of nearly 3 million endoscopy procedures, to explore opportunistic screening for kidney and liver disease.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.diatombiolab.com">Diatom Biolab</a></h4>
+              <p>Trained a compositional model on large single-perturbation datasets to predict the effects of combined gene and drug perturbations, focusing on synthetic lethal interactions in DNA damage repair.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.tomorrowtaste.com">Tomorrow Taste (formerly Weekend Inc.)</a></h4>
+              <p>Built a multimodal model that combines binding, reporter cell line, and sensory panel data to predict the taste properties of designed proteins.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.allegoria.ai">Allegoria</a></h4>
+              <p>Trained a DINOv3-based foundation model for dermatology that predicts 3D skin structure from ordinary 2D images, toward a non-invasive alternative to biopsy for skin cancer diagnosis.</p>
+            </li>
+            <li>
+              <h4><a href="https://www.markov.bio">Markov Biosciences</a></h4>
+              <p>Trained cross-layer transcoders on their virtual cell model to explain the mechanism of action of the oncology drug ralimetinib at the level of interpretable features, and to find response biomarkers.</p>
+            </li>
+            <li>
+              <h4><a href="https://github.com/longevity-genie">Longevity Genie</a></h4>
+              <p>Fine-tuned the Cell2Sentence foundation model on age-annotated single-cell data, then ran virtual screens of genetic interventions to find those that reverse age-related cellular changes.</p>
+            </li>
+          </ol>
+        </details>
+      </div>
+    </section>
+
+    <section id="talks">
+      <h2>Talks, Panels, and Judging</h2>
+      <ul class="talks">
+        <li>
+          <span class="talk-name">[Talk or event name]</span>
+          <span class="talk-role">[Speaker]</span>
+          <span class="talk-date">[Mon YYYY]</span>
+        </li>
+        <li>
+          <span class="talk-name">[Talk or event name]</span>
+          <span class="talk-role">[Moderator]</span>
+          <span class="talk-date">[Mon YYYY]</span>
+        </li>
+        <li>
+          <span class="talk-name">[Talk or event name]</span>
+          <span class="talk-role">[Judge]</span>
+          <span class="talk-date">[Mon YYYY]</span>
+        </li>
+      </ul>
+    </section>
+
+    <footer>Last updated October 2026</footer>
+
+  </main>
+
+  <script>
+    // Expand every dropdown when printing so the full CV prints.
+    window.addEventListener("beforeprint", () => {
+      document.querySelectorAll("details").forEach(d => {
+        d.dataset.wasOpen = d.open;
+        d.open = true;
+      });
+    });
+    window.addEventListener("afterprint", () => {
+      document.querySelectorAll("details").forEach(d => {
+        d.open = d.dataset.wasOpen === "true";
+      });
+    });
+  </script>
+</body>
+</html>
