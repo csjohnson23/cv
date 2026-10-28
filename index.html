@@ -585,7 +585,8 @@
 
   <script>
     // Open any dropdown that a #link points to (or into), then scroll to it.
-    function revealHash() {
+    // Jump instantly when the page opens from a shared link; animate in-page clicks.
+    function revealHash(event) {
       const id = decodeURIComponent(location.hash.slice(1));
       const target = id && document.getElementById(id);
       if (!target) return;
@@ -594,7 +595,8 @@
         if (el.tagName === "DETAILS") el.open = true;
         el = el.parentElement;
       }
-      target.scrollIntoView();
+      const smooth = event && event.type === "hashchange";
+      target.scrollIntoView({ behavior: smooth ? "smooth" : "instant" });
     }
     window.addEventListener("hashchange", revealHash);
     window.addEventListener("DOMContentLoaded", revealHash);
